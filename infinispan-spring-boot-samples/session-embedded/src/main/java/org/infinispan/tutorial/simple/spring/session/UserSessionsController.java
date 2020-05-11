@@ -43,4 +43,10 @@ public class UserSessionsController {
         MapSession mapSession = (MapSession) simpleValueWrapper.get();
         return "Latest " + mapSession.getAttribute(LATEST_SESSION_VALUE);
     }
+
+    @GetMapping("/sessions/clear")
+    public String sessionClear() {
+        cacheManager.getCache("sessions").clear();
+        return "Sessions cleared";
+    }
 }
